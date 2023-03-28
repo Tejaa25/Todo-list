@@ -1,0 +1,14 @@
+<html>
+{%extends "todoApp/todolist.html" %}
+{%block content%}
+    <form method="POST">
+    {%csrf_token%}
+    <br>
+    title<input type="text"name='title' value="{{obj.title}}"><br>
+    <br>
+    desc<input type="text" name="desc" value="{{obj.desc}}"><br>
+    <br>
+    <input type="submit" value="update">
+</form>
+{%endblock%}
+</html>
