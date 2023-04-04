@@ -17,8 +17,12 @@ from django.contrib import admin
 from django.urls import path
 from . import views
 urlpatterns = [
-    path('',views.view), 
-    path('add/',views.add), 
+    path('',views.firstpage), 
+    path('signup',views.signup), 
+    path('signin',views.signin),
+    path('todo',views.view),
+    path('add',views.add), 
     path('del/<id>',views.delete),
     path('upd/<id>',views.update),
+    path('logout',views.logout)
 ]

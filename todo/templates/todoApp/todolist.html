@@ -1,20 +1,32 @@
 {%extends "todoApp/base.html"%}
 {%block content%}
+{%if user.is_authenticated%}
+    <div>
+    <span style="float:right"><button type="submit"><a href="logout">logout</a></button></span>
+    </div>  
+<form action="" method="POST">
+{% csrf_token %}
+{{obj.User}}
+    <h1>hello {{uname}}</h1>
     <h2>TODO-LIST</h2>
-    {%if obj%}
-    <table>
-    {%for o in obj%}
+    <h3>You have {{ obj|length }} uncompleted tasks</h3>
+
+{%if obj%}
+<table>
+{%for o in obj%}
     <tr>
-    <h3>{{o.title}}</h3>
-    <p>{{o.desc}}</p>
-    <i>{{o.date}}</i>
-    <a href="del/{{o.id}}"> delete</a>
-    <a href="upd/{{o.id}}"> update</a>
+        <h3>{{o.title}}</h3>
+        <p>{{o.desc}}</p>
+        <i>{{o.date}}</i>
+        <a href="del/{{o.id}}"> delete</a>
+        <a href="upd/{{o.id}}"> update</a>
     </tr>
-    <br>
-    {%endfor%}
-    </table>
-    {%endif%}
-    <br>
-    <a href='add/' >click here to add</a>
+    <br>   
+{%endfor%}
+</table>
+{%endif%}
+<br>
+<a href='add' >click here to add</a>
+</form>
+{%endif%}
 {%endblock%}
