@@ -4,8 +4,6 @@
     <div>
     <span style="float:right"><button type="submit"><a href="logout">logout</a></button></span>
     </div>  
-<form action="" method="POST">
-{% csrf_token %}
 {{obj.User}}
     <h1>hello {{uname}}</h1>
     <h2>TODO-LIST</h2>
@@ -27,6 +25,6 @@
 {%endif%}
 <br>
 <a href='add' >click here to add</a>
-</form>
+
 {%endif%}
 {%endblock%}

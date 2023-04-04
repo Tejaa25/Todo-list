@@ -32,10 +32,10 @@ def signin(request):
         if user is not None:
             login(request,user)
             obj=todo.objects.filter(User=request.user)
-            return render(request,'todoApp/todolist.html',context={'obj':obj,'uname':user.first_name})
+            return redirect('/todo')
         else:
             messages.error(request,"Invalid credentials")
-            return redirect('/')
+            return redirect('firstpage')
     return render(request,"todoApp/signin.html")
 def view(request):
     obj=todo.objects.filter(User=request.user)
@@ -51,7 +51,7 @@ def add(request):
             new_todo.User=request.user
             uname=request.user
             new_todo.save()
-            return render(request,'todoApp/todolist.html',{'uname':uname,'obj':obj})
+            return redirect('/todo')
     else:
         form=forms.todoForm()
     return render(request,'todoApp/todo.html',{'form':form})
